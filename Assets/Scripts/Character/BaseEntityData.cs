@@ -1,14 +1,8 @@
-﻿using System;
+﻿using FDK.Core;
 
 namespace FDK.Character
 {
-    public abstract class BaseEntityData
+    public abstract class BaseEntityData : BasePlayerData
     {
-        public BaseEntityData()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
-
-        public string Id;
     }
 }

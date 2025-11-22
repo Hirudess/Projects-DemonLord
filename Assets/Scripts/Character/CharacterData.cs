@@ -2,10 +2,17 @@
 
 namespace FDK.Character
 {
-    public class CharacterData : BaseCharacterData
+    public interface ICharacterData : IPlayerData
     {
-        public string Name { get; set; }
-        public readonly CharacterClassGameData ClassData;
+        string Name { get; }
+        CharacterClassGameData ClassData { get; }
+    }
+
+    public class CharacterData : BaseCharacterData, ICharacterData
+    {
+        public string Name { get; private set; }
+        public CharacterClassGameData ClassData { get; private set; }
+
 
         public CharacterData(string name, CharacterClassGameData classGameData)
         {

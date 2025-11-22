@@ -1,8 +1,8 @@
 ﻿namespace FDK.Core
 {
-    public class CharacterClassGameData
+    public class CharacterClassGameData : BaseGameData
     {
-        public string ClassName;
+        public string Name;
         public string Description;
     }
 }
