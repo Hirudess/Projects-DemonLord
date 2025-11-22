@@ -1,5 +1,6 @@
 ﻿using FDK.Core;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace FDK.Character
 {
@@ -8,23 +9,18 @@ namespace FDK.Character
         CharacterClassGameData GetCharacterClass(string id);
     }
 
+    [System.Serializable]
     public struct CharacterClassCollectionRef
     {
-
+        public CharacterClassGameDataCollection CharacterClassData;
     }
 
-    public class CharacterClassGameDataCollectionService : BaseGameDataCollectionService<CharacterClassGameData>, ICharacterClassGameDataCollectionService
+    public class CharacterClassGameDataCollectionService : BaseGameDataCollectionService<CharacterClassGameData>, ICharacterClassGameDataCollectionService, IStartable
     {
-        private readonly TextAsset _characterClassCollectionRef;
-
-        public CharacterClassGameDataCollectionService()
+        public CharacterClassGameDataCollectionService(CharacterClassCollectionRef classRef)
         {
-            var classGameDataCollection = JsonUtility.FromJson<CharacterClassGameDataCollection>(_characterClassCollectionRef.text);
-            if (classGameDataCollection == null)
-            {
-                return;
-            }
-            Collection = classGameDataCollection;
+            Collection = classRef.CharacterClassData;
+            SetReady(true);
         }
 
         public CharacterClassGameData GetCharacterClass(string id)
@@ -32,6 +28,10 @@ namespace FDK.Character
             var characterClass = Collection.GetItem(id);
             if (characterClass == null) return null;
             return characterClass;
+        }
+
+        public void Start()
+        {
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace FDK.Core.GameData
 {
-    public abstract class BaseGameDataCollection<T> where T : BaseGameData
+    public abstract class BaseGameDataCollection<T> : BasePreset where T : BaseGameData
     {
         public List<T> Collections;
         protected Dictionary<string, T> _gameDataDict = new();

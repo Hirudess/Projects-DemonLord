@@ -1,6 +1,8 @@
-﻿namespace FDK.Core
+﻿using UnityEngine;
+
+namespace FDK.Core
 {
-    public class BaseGameData
+    public class BaseGameData : BasePreset
     {
         public string Id;
     }
