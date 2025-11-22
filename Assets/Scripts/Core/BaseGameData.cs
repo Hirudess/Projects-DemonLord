@@ -1,6 +1,6 @@
 ﻿namespace FDK.Core
 {
-    public abstract class BaseGameData
+    public class BaseGameData
     {
         public string Id;
     }

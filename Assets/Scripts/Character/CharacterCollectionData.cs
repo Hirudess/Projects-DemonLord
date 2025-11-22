@@ -1,36 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using FDK.Core;
 
 namespace FDK.Character
 {
-    public interface ICharacterCollectionData
+    public interface ICharacterCollectionData : ICollectionData<ICharacterData>
     {
-        List<CharacterData> CharacterInventory { get; }
 
-        void Add(CharacterData data);
-        void Remove(CharacterData data);
     }
 
-    public class CharacterCollectionData : ICharacterCollectionData
+    public class CharacterCollectionData : BaseCollectionData<ICharacterData>, ICharacterCollectionData
     {
-        public List<CharacterData> CharacterInventory { get; private set; }
-
-        public CharacterCollectionData()
-        {
-            CharacterInventory = new List<CharacterData>();
-        }
-
-        public void Add(CharacterData data)
-        {
-            if (CharacterInventory.Contains(data)) return;
-            CharacterInventory.Add(data);
-        }
-
-        public void Remove(CharacterData data)
-        {
-            var character = CharacterInventory.FirstOrDefault(x => x.Id == data.Id);
-            if (character == null) return;
-            CharacterInventory.Remove(data);
-        }
     }
 }
