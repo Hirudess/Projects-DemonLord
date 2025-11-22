@@ -30,7 +30,7 @@ namespace FDK.Core
 
         public void RemoveData(T data)
         {
-            var character = Collection.FirstOrDefault(x => x.Id == data.Id);
+            var character = GetData(data);
             if (character == null) return;
             Collection.Remove(data);
         }
